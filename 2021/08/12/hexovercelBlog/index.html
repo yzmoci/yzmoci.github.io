@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.imoci.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="准备工作 GitHub我们需要注册一个GitHub账号并登录 Vercel我们需要使用GitHub账号来登录Vercel Node.js我们需要下载一个合适版本的Node. 最后我们需要Win+R打开“运行”，输入cmd点击确定。在cmd里依次输入  node -v   npm -v 后回车，如若cmd报错请重新安装node.js   正式开始 下载Hexo请在cmd里输入  npm instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用Hexo和Vercel做出博客">
+<meta property="og:url" content="https://www.imoci.top/2021/08/12/hexovercelBlog/index.html">
+<meta property="og:site_name" content="-Moci Blog-">
+<meta property="og:description" content="准备工作 GitHub我们需要注册一个GitHub账号并登录 Vercel我们需要使用GitHub账号来登录Vercel Node.js我们需要下载一个合适版本的Node. 最后我们需要Win+R打开“运行”，输入cmd点击确定。在cmd里依次输入  node -v   npm -v 后回车，如若cmd报错请重新安装node.js   正式开始 下载Hexo请在cmd里输入  npm instal">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-12T09:51:34.000Z">
+<meta property="article:modified_time" content="2021-08-13T10:27:24.758Z">
+<meta property="article:author" content="Moci墨辞">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.imoci.top/2021/08/12/hexovercelBlog/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何使用Hexo和Vercel做出博客 | -Moci Blog-</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">-Moci Blog-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.imoci.top/2021/08/12/hexovercelBlog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Moci墨辞">
+      <meta itemprop="description" content="ヽ(•ω•。)ノMociのBlog里面可能有很多你需要但是你找不到的东西哦~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="-Moci Blog-">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何使用Hexo和Vercel做出博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-12 17:51:34" itemprop="dateCreated datePublished" datetime="2021-08-12T17:51:34+08:00">2021-08-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-13 18:27:24" itemprop="dateModified" datetime="2021-08-13T18:27:24+08:00">2021-08-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><h3 id="我们需要注册一个GitHub账号并登录"><a href="#我们需要注册一个GitHub账号并登录" class="headerlink" title="我们需要注册一个GitHub账号并登录"></a>我们需要<a target="_blank" rel="noopener" href="https://github.com/signup">注册</a>一个GitHub账号并<a target="_blank" rel="noopener" href="https://github.com/login">登录</a></h3></li>
+<li><h3 id="Vercel"><a href="#Vercel" class="headerlink" title="Vercel"></a>Vercel</h3><h3 id="我们需要使用GitHub账号来登录Vercel"><a href="#我们需要使用GitHub账号来登录Vercel" class="headerlink" title="我们需要使用GitHub账号来登录Vercel"></a>我们需要使用GitHub账号来<a target="_blank" rel="noopener" href="https://vercel.com/login">登录</a>Vercel</h3></li>
+<li><h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><h3 id="我们需要下载一个合适版本的Node"><a href="#我们需要下载一个合适版本的Node" class="headerlink" title="我们需要下载一个合适版本的Node."></a>我们需要<a target="_blank" rel="noopener" href="https://nodejs.org/">下载</a>一个合适版本的Node.</h3></li>
+<li><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><h3 id="我们需要Win-R打开“运行”，输入cmd点击确定。在cmd里依次输入"><a href="#我们需要Win-R打开“运行”，输入cmd点击确定。在cmd里依次输入" class="headerlink" title="我们需要Win+R打开“运行”，输入cmd点击确定。在cmd里依次输入"></a>我们需要<kbd>Win</kbd>+<kbd>R</kbd>打开“运行”，输入cmd点击确定。在cmd里依次输入</h3><p>  node -v</p>
+<p>  npm -v</p>
+<h3 id="后回车，如若cmd报错请重新安装node-js"><a href="#后回车，如若cmd报错请重新安装node-js" class="headerlink" title="后回车，如若cmd报错请重新安装node.js"></a>后回车，如若cmd报错请重新安装node.js</h3></li>
+</ul>
+<hr>
+<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><ul>
+<li><h3 id="下载Hexo"><a href="#下载Hexo" class="headerlink" title="下载Hexo"></a>下载Hexo</h3><h3 id="请在cmd里输入"><a href="#请在cmd里输入" class="headerlink" title="请在cmd里输入"></a>请在cmd里输入</h3>  npm install hexo-cli -g<h3 id="并回车"><a href="#并回车" class="headerlink" title="并回车"></a>并回车</h3><h3 id="等待一会后可以在cmd输入"><a href="#等待一会后可以在cmd输入" class="headerlink" title="等待一会后可以在cmd输入"></a>等待一会后可以在cmd输入</h3>  hexo -v<h3 id="回车后等待一会如果没有返回一长串版本号请重新执行"><a href="#回车后等待一会如果没有返回一长串版本号请重新执行" class="headerlink" title="回车后等待一会如果没有返回一长串版本号请重新执行"></a>回车后等待一会如果没有返回一长串版本号请重新执行</h3>  npm install hexo-cli -g<h3 id="并回车-1"><a href="#并回车-1" class="headerlink" title="并回车"></a>并回车</h3></li>
+</ul>
+<hr>
+<ul>
+<li><h3 id="下载Hexo必需文件"><a href="#下载Hexo必需文件" class="headerlink" title="下载Hexo必需文件"></a>下载Hexo必需文件</h3><h3 id="请在桌面创建一个文件夹，取名“blog”，并在cmd执行"><a href="#请在桌面创建一个文件夹，取名“blog”，并在cmd执行" class="headerlink" title="请在桌面创建一个文件夹，取名“blog”，并在cmd执行"></a>请在桌面创建一个文件夹，取名“blog”，并在cmd执行</h3>  cd Desktop\blog<h3 id="后执行"><a href="#后执行" class="headerlink" title="后执行"></a>后执行</h3>  hexo init</li>
+</ul>
+<hr>
+<ul>
+<li><h3 id="将博客上载到Vercel"><a href="#将博客上载到Vercel" class="headerlink" title="将博客上载到Vercel"></a>将博客上载到Vercel</h3><h3 id="等待下载完博客文件后进入文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入"><a href="#等待下载完博客文件后进入文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入" class="headerlink" title="等待下载完博客文件后进入文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入"></a>等待下载完博客文件后进入文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入</h3>  cmd<h3 id="并回车，执行"><a href="#并回车，执行" class="headerlink" title="并回车，执行"></a>并回车，执行</h3>  vercel<h3 id="并回车，这时可能会要求你登录，按照操作就行了。还会问你各种问题，比如项目名称之类的（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现"><a href="#并回车，这时可能会要求你登录，按照操作就行了。还会问你各种问题，比如项目名称之类的（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现" class="headerlink" title="并回车，这时可能会要求你登录，按照操作就行了。还会问你各种问题，比如项目名称之类的（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现"></a>并回车，这时可能会要求你登录，按照操作就行了。还会问你各种问题，比如项目名称之类的（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现</h3>  run “vercel –prod”<h3 id="时请执行（如果没有出现以上字段但是给你了个链接就不需要再执行以下命令了！直接打开链接即可）"><a href="#时请执行（如果没有出现以上字段但是给你了个链接就不需要再执行以下命令了！直接打开链接即可）" class="headerlink" title="时请执行（如果没有出现以上字段但是给你了个链接就不需要再执行以下命令了！直接打开链接即可）"></a>时请执行（如果没有出现以上字段但是给你了个链接就不需要再执行以下命令了！直接打开链接即可）</h3>  vercel –prod<h3 id="继续等一会时你就可以复制系统给你的链接进入浏览器查看你的博客了。进入Vercel官网还可以编辑免费域名或是你购买的域名了"><a href="#继续等一会时你就可以复制系统给你的链接进入浏览器查看你的博客了。进入Vercel官网还可以编辑免费域名或是你购买的域名了" class="headerlink" title="继续等一会时你就可以复制系统给你的链接进入浏览器查看你的博客了。进入Vercel官网还可以编辑免费域名或是你购买的域名了~"></a>继续等一会时你就可以复制系统给你的链接进入浏览器查看你的博客了。进入<a target="_blank" rel="noopener" href="https://vercel.com/">Vercel官网</a>还可以编辑免费域名或是你购买的域名了~</h3></li>
+</ul>
+<hr>
+<ul>
+<li><h3 id="如何写作"><a href="#如何写作" class="headerlink" title="如何写作"></a>如何写作</h3><h3 id="Win-R打开“运行”，输入cmd点击确定。在cmd输入"><a href="#Win-R打开“运行”，输入cmd点击确定。在cmd输入" class="headerlink" title="Win+R打开“运行”，输入cmd点击确定。在cmd输入"></a><kbd>Win</kbd>+<kbd>R</kbd>打开“运行”，输入cmd点击确定。在cmd输入</h3>  hexo new 替换成你自己的文章标题<h3 id="后回车，进入C-Users-Administrator-Desktop-blog-source-posts找到你创建的文章，下载Microsoft-Visual-Studio-Code后使用它打开你的文章使用Markdown语法进行编辑即可。"><a href="#后回车，进入C-Users-Administrator-Desktop-blog-source-posts找到你创建的文章，下载Microsoft-Visual-Studio-Code后使用它打开你的文章使用Markdown语法进行编辑即可。" class="headerlink" title="后回车，进入C:\Users\Administrator\Desktop\blog\source\posts找到你创建的文章，下载Microsoft Visual Studio Code后使用它打开你的文章使用Markdown语法进行编辑即可。"></a>后回车，进入C:\Users\Administrator\Desktop\blog\source\posts找到你创建的文章，<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">下载</a>Microsoft Visual Studio Code后使用它打开你的文章使用Markdown语法进行编辑即可。</h3></li>
+</ul>
+<hr>
+<ul>
+<li><h3 id="更新我的博客"><a href="#更新我的博客" class="headerlink" title="更新我的博客"></a>更新我的博客</h3><h3 id="进入blog文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入"><a href="#进入blog文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入" class="headerlink" title="进入blog文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入"></a>进入blog文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入</h3>  cmd<h3 id="并回车，执行-1"><a href="#并回车，执行-1" class="headerlink" title="并回车，执行"></a>并回车，执行</h3>  vercel<h3 id="并回车，按照操作就行了（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现"><a href="#并回车，按照操作就行了（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现" class="headerlink" title="并回车，按照操作就行了（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现"></a>并回车，按照操作就行了（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现</h3>  run “vercel –prod”<h3 id="时请执行"><a href="#时请执行" class="headerlink" title="时请执行"></a>时请执行</h3>  vercel –prod<h3 id="之后即可进入网站看看你的文章了"><a href="#之后即可进入网站看看你的文章了" class="headerlink" title="之后即可进入网站看看你的文章了"></a>之后即可进入网站看看你的文章了</h3></li>
+</ul>
+<hr>
+<h2 id="声明：此文章只是根据个人经验编写，如有遗漏或无法建站请勿找我"><a href="#声明：此文章只是根据个人经验编写，如有遗漏或无法建站请勿找我" class="headerlink" title="声明：此文章只是根据个人经验编写，如有遗漏或无法建站请勿找我"></a>声明：此文章只是根据个人经验编写，如有遗漏或无法建站请勿找我</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub"><span class="nav-number">1.1.</span> <span class="nav-text">GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E6%B3%A8%E5%86%8C%E4%B8%80%E4%B8%AAGitHub%E8%B4%A6%E5%8F%B7%E5%B9%B6%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">我们需要注册一个GitHub账号并登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vercel"><span class="nav-number">1.3.</span> <span class="nav-text">Vercel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8GitHub%E8%B4%A6%E5%8F%B7%E6%9D%A5%E7%99%BB%E5%BD%95Vercel"><span class="nav-number">1.4.</span> <span class="nav-text">我们需要使用GitHub账号来登录Vercel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js"><span class="nav-number">1.5.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E4%B8%80%E4%B8%AA%E5%90%88%E9%80%82%E7%89%88%E6%9C%AC%E7%9A%84Node"><span class="nav-number">1.6.</span> <span class="nav-text">我们需要下载一个合适版本的Node.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">1.7.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81Win-R%E6%89%93%E5%BC%80%E2%80%9C%E8%BF%90%E8%A1%8C%E2%80%9D%EF%BC%8C%E8%BE%93%E5%85%A5cmd%E7%82%B9%E5%87%BB%E7%A1%AE%E5%AE%9A%E3%80%82%E5%9C%A8cmd%E9%87%8C%E4%BE%9D%E6%AC%A1%E8%BE%93%E5%85%A5"><span class="nav-number">1.8.</span> <span class="nav-text">我们需要Win+R打开“运行”，输入cmd点击确定。在cmd里依次输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E5%9B%9E%E8%BD%A6%EF%BC%8C%E5%A6%82%E8%8B%A5cmd%E6%8A%A5%E9%94%99%E8%AF%B7%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85node-js"><span class="nav-number">1.9.</span> <span class="nav-text">后回车，如若cmd报错请重新安装node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDHexo"><span class="nav-number">2.1.</span> <span class="nav-text">下载Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E5%9C%A8cmd%E9%87%8C%E8%BE%93%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">请在cmd里输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6"><span class="nav-number">2.3.</span> <span class="nav-text">并回车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E4%B8%80%E4%BC%9A%E5%90%8E%E5%8F%AF%E4%BB%A5%E5%9C%A8cmd%E8%BE%93%E5%85%A5"><span class="nav-number">2.4.</span> <span class="nav-text">等待一会后可以在cmd输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E8%BD%A6%E5%90%8E%E7%AD%89%E5%BE%85%E4%B8%80%E4%BC%9A%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%BF%94%E5%9B%9E%E4%B8%80%E9%95%BF%E4%B8%B2%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B7%E9%87%8D%E6%96%B0%E6%89%A7%E8%A1%8C"><span class="nav-number">2.5.</span> <span class="nav-text">回车后等待一会如果没有返回一长串版本号请重新执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6-1"><span class="nav-number">2.6.</span> <span class="nav-text">并回车</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDHexo%E5%BF%85%E9%9C%80%E6%96%87%E4%BB%B6"><span class="nav-number">2.7.</span> <span class="nav-text">下载Hexo必需文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E5%9C%A8%E6%A1%8C%E9%9D%A2%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%8F%96%E5%90%8D%E2%80%9Cblog%E2%80%9D%EF%BC%8C%E5%B9%B6%E5%9C%A8cmd%E6%89%A7%E8%A1%8C"><span class="nav-number">2.8.</span> <span class="nav-text">请在桌面创建一个文件夹，取名“blog”，并在cmd执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E6%89%A7%E8%A1%8C"><span class="nav-number">2.9.</span> <span class="nav-text">后执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E4%B8%8A%E8%BD%BD%E5%88%B0Vercel"><span class="nav-number">2.10.</span> <span class="nav-text">将博客上载到Vercel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E4%B8%8B%E8%BD%BD%E5%AE%8C%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E5%90%8E%E8%BF%9B%E5%85%A5%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E6%9C%80%E4%B8%8A%E6%96%B9%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%8F%EF%BC%88%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%AE%AD%E5%A4%B4%E5%92%8C%E6%90%9C%E7%B4%A2%E6%A0%8F%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%8F%EF%BC%89%EF%BC%8C%E8%BE%93%E5%85%A5"><span class="nav-number">2.11.</span> <span class="nav-text">等待下载完博客文件后进入文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6%EF%BC%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">2.12.</span> <span class="nav-text">并回车，执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6%EF%BC%8C%E8%BF%99%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E8%A6%81%E6%B1%82%E4%BD%A0%E7%99%BB%E5%BD%95%EF%BC%8C%E6%8C%89%E7%85%A7%E6%93%8D%E4%BD%9C%E5%B0%B1%E8%A1%8C%E4%BA%86%E3%80%82%E8%BF%98%E4%BC%9A%E9%97%AE%E4%BD%A0%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%EF%BC%8C%E6%AF%94%E5%A6%82%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0%E4%B9%8B%E7%B1%BB%E7%9A%84%EF%BC%88%E6%88%91%E5%8F%AA%E8%AE%B0%E5%BE%97%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BA%86%EF%BC%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%AF%B7%E9%80%89%E6%8B%A9Y%EF%BC%89%E3%80%82%E6%8E%A5%E7%9D%80%E5%9C%A8%E8%BF%94%E5%9B%9E%E5%86%85%E5%AE%B9%E7%BB%93%E5%B0%BE%E5%87%BA%E7%8E%B0"><span class="nav-number">2.13.</span> <span class="nav-text">并回车，这时可能会要求你登录，按照操作就行了。还会问你各种问题，比如项目名称之类的（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E8%AF%B7%E6%89%A7%E8%A1%8C%EF%BC%88%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E5%87%BA%E7%8E%B0%E4%BB%A5%E4%B8%8A%E5%AD%97%E6%AE%B5%E4%BD%86%E6%98%AF%E7%BB%99%E4%BD%A0%E4%BA%86%E4%B8%AA%E9%93%BE%E6%8E%A5%E5%B0%B1%E4%B8%8D%E9%9C%80%E8%A6%81%E5%86%8D%E6%89%A7%E8%A1%8C%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%E4%BA%86%EF%BC%81%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="nav-number">2.14.</span> <span class="nav-text">时请执行（如果没有出现以上字段但是给你了个链接就不需要再执行以下命令了！直接打开链接即可）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E7%BB%AD%E7%AD%89%E4%B8%80%E4%BC%9A%E6%97%B6%E4%BD%A0%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%A4%8D%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%BB%99%E4%BD%A0%E7%9A%84%E9%93%BE%E6%8E%A5%E8%BF%9B%E5%85%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9F%A5%E7%9C%8B%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BA%86%E3%80%82%E8%BF%9B%E5%85%A5Vercel%E5%AE%98%E7%BD%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E7%BC%96%E8%BE%91%E5%85%8D%E8%B4%B9%E5%9F%9F%E5%90%8D%E6%88%96%E6%98%AF%E4%BD%A0%E8%B4%AD%E4%B9%B0%E7%9A%84%E5%9F%9F%E5%90%8D%E4%BA%86"><span class="nav-number">2.15.</span> <span class="nav-text">继续等一会时你就可以复制系统给你的链接进入浏览器查看你的博客了。进入Vercel官网还可以编辑免费域名或是你购买的域名了~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%86%99%E4%BD%9C"><span class="nav-number">2.16.</span> <span class="nav-text">如何写作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Win-R%E6%89%93%E5%BC%80%E2%80%9C%E8%BF%90%E8%A1%8C%E2%80%9D%EF%BC%8C%E8%BE%93%E5%85%A5cmd%E7%82%B9%E5%87%BB%E7%A1%AE%E5%AE%9A%E3%80%82%E5%9C%A8cmd%E8%BE%93%E5%85%A5"><span class="nav-number">2.17.</span> <span class="nav-text">Win+R打开“运行”，输入cmd点击确定。在cmd输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E5%9B%9E%E8%BD%A6%EF%BC%8C%E8%BF%9B%E5%85%A5C-Users-Administrator-Desktop-blog-source-posts%E6%89%BE%E5%88%B0%E4%BD%A0%E5%88%9B%E5%BB%BA%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%8C%E4%B8%8B%E8%BD%BDMicrosoft-Visual-Studio-Code%E5%90%8E%E4%BD%BF%E7%94%A8%E5%AE%83%E6%89%93%E5%BC%80%E4%BD%A0%E7%9A%84%E6%96%87%E7%AB%A0%E4%BD%BF%E7%94%A8Markdown%E8%AF%AD%E6%B3%95%E8%BF%9B%E8%A1%8C%E7%BC%96%E8%BE%91%E5%8D%B3%E5%8F%AF%E3%80%82"><span class="nav-number">2.18.</span> <span class="nav-text">后回车，进入C:\Users\Administrator\Desktop\blog\source\posts找到你创建的文章，下载Microsoft Visual Studio Code后使用它打开你的文章使用Markdown语法进行编辑即可。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.19.</span> <span class="nav-text">更新我的博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5blog%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%82%B9%E5%87%BB%E6%9C%80%E4%B8%8A%E6%96%B9%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%8F%EF%BC%88%E5%9C%A8%E4%B8%A4%E4%B8%AA%E7%AE%AD%E5%A4%B4%E5%92%8C%E6%90%9C%E7%B4%A2%E6%A0%8F%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%8F%EF%BC%89%EF%BC%8C%E8%BE%93%E5%85%A5"><span class="nav-number">2.20.</span> <span class="nav-text">进入blog文件夹，点击最上方的地址栏（在两个箭头和搜索栏中间的地址栏），输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6%EF%BC%8C%E6%89%A7%E8%A1%8C-1"><span class="nav-number">2.21.</span> <span class="nav-text">并回车，执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%9B%9E%E8%BD%A6%EF%BC%8C%E6%8C%89%E7%85%A7%E6%93%8D%E4%BD%9C%E5%B0%B1%E8%A1%8C%E4%BA%86%EF%BC%88%E6%88%91%E5%8F%AA%E8%AE%B0%E5%BE%97%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BA%86%EF%BC%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%AF%B7%E9%80%89%E6%8B%A9Y%EF%BC%89%E3%80%82%E6%8E%A5%E7%9D%80%E5%9C%A8%E8%BF%94%E5%9B%9E%E5%86%85%E5%AE%B9%E7%BB%93%E5%B0%BE%E5%87%BA%E7%8E%B0"><span class="nav-number">2.22.</span> <span class="nav-text">并回车，按照操作就行了（我只记得第一个了，第一个请选择Y）。接着在返回内容结尾出现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E8%AF%B7%E6%89%A7%E8%A1%8C"><span class="nav-number">2.23.</span> <span class="nav-text">时请执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%8B%E5%90%8E%E5%8D%B3%E5%8F%AF%E8%BF%9B%E5%85%A5%E7%BD%91%E7%AB%99%E7%9C%8B%E7%9C%8B%E4%BD%A0%E7%9A%84%E6%96%87%E7%AB%A0%E4%BA%86"><span class="nav-number">2.24.</span> <span class="nav-text">之后即可进入网站看看你的文章了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%EF%BC%9A%E6%AD%A4%E6%96%87%E7%AB%A0%E5%8F%AA%E6%98%AF%E6%A0%B9%E6%8D%AE%E4%B8%AA%E4%BA%BA%E7%BB%8F%E9%AA%8C%E7%BC%96%E5%86%99%EF%BC%8C%E5%A6%82%E6%9C%89%E9%81%97%E6%BC%8F%E6%88%96%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%99%E8%AF%B7%E5%8B%BF%E6%89%BE%E6%88%91"><span class="nav-number">3.</span> <span class="nav-text">声明：此文章只是根据个人经验编写，如有遗漏或无法建站请勿找我</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Moci墨辞"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Moci墨辞</p>
+  <div class="site-description" itemprop="description">ヽ(•ω•。)ノMociのBlog里面可能有很多你需要但是你找不到的东西哦~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Moci墨辞</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '38c117227d83a06ddb6f',
+      clientSecret: '56d21e39ca5a5f37fdb3e2af7d02e00e464df7f8',
+      repo        : 'pinglun',
+      owner       : 'yzmoci',
+      admin       : ['yzmoci'],
+      id          : '1fc95ab64f285727fcae6f67df81a3c0',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.55' zIndex="-2" count="125" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</body>
+</html>
